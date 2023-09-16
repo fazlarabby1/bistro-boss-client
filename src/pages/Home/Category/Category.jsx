@@ -28,25 +28,25 @@ const Category = () => {
                 <SwiperSlide className='fixed'>
                     <img src={slide1} alt="" />
                     <div className='flex justify-center'>
-                        <h3 className='sm:text-xl text-white md:text-4xl uppercase text-center relative bottom-8 md:bottom-16 bg-slate-700 bg-opacity-40 px-2 rounded'>Salads</h3>
+                        <h3 className='text-xs sm:text-xl text-white md:text-4xl uppercase text-center relative bottom-8 md:bottom-16 bg-slate-700 bg-opacity-40 px-2 rounded'>Salads</h3>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='fixed'>
                     <img src={slide2} alt="" />
                     <div className='flex justify-center'>
-                        <h3 className='sm:text-xl text-white md:text-4xl uppercase text-center relative bottom-8 md:bottom-16 bg-slate-700 bg-opacity-40 px-2 rounded'>Pizzas</h3>
+                        <h3 className='text-xs sm:text-xl text-white md:text-4xl uppercase text-center relative bottom-8 md:bottom-16 bg-slate-700 bg-opacity-40 px-2 rounded'>Pizzas</h3>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='fixed'>
                     <img src={slide3} alt="" />
                     <div className='flex justify-center'>
-                        <h3 className='sm:text-xl text-white md:text-4xl uppercase text-center relative bottom-8 md:bottom-16 bg-slate-700 bg-opacity-40 px-2 rounded'>Soups</h3>
+                        <h3 className='text-xs sm:text-xl text-white md:text-4xl uppercase text-center relative bottom-8 md:bottom-16 bg-slate-700 bg-opacity-40 px-2 rounded'>Soups</h3>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='fixed'>
                     <img src={slide4} alt="" />
                     <div className='flex justify-center'>
-                        <h3 className='sm:text-xl text-white md:text-4xl uppercase text-center relative bottom-8 md:bottom-16 bg-slate-700 bg-opacity-40 px-2 rounded'>Deserts</h3>
+                        <h3 className='text-xs sm:text-xl text-white md:text-4xl uppercase text-center relative bottom-8 md:bottom-16 bg-slate-700 bg-opacity-40 px-2 rounded'>Deserts</h3>
                     </div>
                 </SwiperSlide>
             </Swiper>
