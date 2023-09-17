@@ -8,7 +8,7 @@ const Cover = ({ img, title }) => {
             bgImageAlt="the menu"
             strength={-200}
         >
-            <div className="hero h-[600px]">
+            <div className="hero h-[450px] md:h-[700px]">
                 <div></div>
                 <div className="hero-content text-center text-neutral-content bg-black bg-opacity-60 md:px-16 py-10">
                     <div className="max-w-md">
