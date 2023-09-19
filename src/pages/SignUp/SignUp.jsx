@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const {createUser} = useContext(AuthContext);
@@ -13,9 +14,18 @@ const SignUp = () => {
         .then(result => {
             const loggedUser = result.user; 
             console.log(loggedUser);
+            Swal.fire({
+                title: 'User Created Successfully',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
         })
         .catch(err=>console.log(err));
-        // reset();
+        reset();
     };
 
     return (
