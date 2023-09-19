@@ -44,9 +44,10 @@ const Navbar = () => {
                         {navOptions}
                     </ul>
                 </div>
+                {user?.displayName && 
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
-                </div>
+                    <a className="btn">{user?.displayName}</a>
+                </div>}
             </div>
         </>
     );
