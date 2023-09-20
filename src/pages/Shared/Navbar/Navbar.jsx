@@ -50,7 +50,7 @@ const Navbar = () => {
                 {user &&
                     <div className="navbar-end mr-2">
 
-                        <Link to='/'>
+                        <Link to='/dashboard/mycart'>
                             <span className="flex">
                                 <FaShoppingCart className="text-4xl"/>
                                {cart && <span className="badge badge-secondary right-2 absolute font-bold p-2">{cart?.length || 0}</span>}
