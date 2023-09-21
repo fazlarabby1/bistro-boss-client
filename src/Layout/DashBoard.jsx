@@ -1,10 +1,14 @@
-import { FaCalendarAlt, FaHome, FaShoppingBag, FaShoppingCart, FaWallet } from "react-icons/fa";
+import { FaBook, FaCalendarAlt, FaHome, FaShoppingBag, FaShoppingCart, FaUsers, FaUtensils, FaWallet } from "react-icons/fa";
 import { GiHamburgerMenu, } from "react-icons/gi";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 
 const DashBoard = () => {
     const [cart] = useCart();
+
+    // TODO: Load Data From Serevr To Have Dynamic isAdmin Based Data
+    const isAdmin = true;
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -20,15 +24,27 @@ const DashBoard = () => {
 
                     {/* Sidebar content here */}
                     <li className="mb-3"><h1 className="text-3xl font-bold uppercase">Bistro Boss</h1><span className="text-2xl font-semibold uppercase tracking-[0.2em]"> Restaurant</span></li>
-                    <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/home'><FaHome /> User Home</NavLink></li>
-                    <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/reservation'><FaCalendarAlt className=" mr-1" /> Reservation</NavLink></li>
 
-                    <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/mycart'><FaShoppingCart /> My Cart <span className="badge badge-secondary right-2 absolute font-bold p-2">{cart?.length || 0}</span></NavLink></li>
+                    {
+                        isAdmin ?
+                            <>
+                                <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/home'><FaHome /> Admin Home</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/reservation'><FaUtensils className=" mr-1" /> Add Items</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/mycart'><FaShoppingCart /> Manage Items</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/history'><FaBook className=" mr-1" /> Manage Bookings</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/allusers'><FaUsers className=" mr-1" /> All Users</NavLink></li>
+                            </> :
+                            <>
+                                <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/home'><FaHome /> User Home</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/reservation'><FaCalendarAlt className=" mr-1" /> Reservation</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/mycart'><FaShoppingCart /> My Cart <span className="badge badge-secondary right-2 absolute font-bold p-2">{cart?.length || 0}</span></NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/history'><FaWallet className=" mr-1" /> Payment History</NavLink></li>
+                            </>
+                    }
 
-                    <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/history'><FaWallet className=" mr-1" /> Payment History</NavLink></li>
+
 
                     <div className="my-5 border rounded h-1 bg-white"></div>
-
                     <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/'><FaHome className=" mr-1" />Home</NavLink></li>
                     <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/menu'><GiHamburgerMenu className=" mr-1" />Menu</NavLink></li>
                     <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/order/salad'><FaShoppingBag className=" mr-1" />Shop</NavLink></li>

@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -37,7 +38,7 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 });
-                navigate(from, {replace: true});
+                navigate(from, { replace: true });
             })
     };
 
@@ -90,7 +91,8 @@ const Login = () => {
                                 <input disabled={disable} className="btn bg-orange-400 hover:bg-orange-600 text-white" type="submit" value="Login" />
                             </div>
                         </form>
-                        <p className='text-center pb-4 text-orange-400'><small>New Here? <Link to="/signup" className='font-semibold hover:underline hover:text-blue-600'>Create an account</Link></small></p>
+                        <SocialLogin />
+                        <p className='text-center py-4 text-orange-400'><small>New Here? <Link to="/signup" className='font-semibold hover:underline hover:text-blue-600'>Create an account</Link></small></p>
                     </div>
                 </div>
             </div>

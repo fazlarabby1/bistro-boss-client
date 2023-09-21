@@ -54,7 +54,7 @@ const MyCart = () => {
                 <div className="overflow-x-auto mt-5">
                     <table className="table">
                         {/* head */}
-                        <thead>
+                        <thead className="bg-[#D1A054]">
                             <tr className="">
                                 <th>#</th>
                                 <th>Image</th>
