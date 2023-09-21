@@ -40,7 +40,7 @@ const Navbar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <Link to="/" className="btn btn-ghost uppercase text-lg">Bistro Boss <br />Restaurant</Link>
+                    <Link to="/" className="btn btn-ghost uppercase text-lg -ml-5 md:ml-0">Bistro Boss <br />Restaurant</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -50,12 +50,17 @@ const Navbar = () => {
                 {user &&
                     <div className="navbar-end mr-2">
 
-                        <Link to='/'>
+                        <Link to='/dashboard/mycart'>
                             <span className="flex">
-                                <FaShoppingCart className="text-4xl"/>
-                               {cart && <span className="badge badge-secondary right-2 absolute font-bold p-2">{cart?.length || 0}</span>}
+                                <FaShoppingCart className="text-4xl" />
+                                {cart && <span className="badge badge-secondary absolute right-16 font-bold p-2">{cart?.length || 0}</span>}
                             </span>
                         </Link>
+                        <div className="avatar ml-3">
+                            <div className="w-10 rounded-full">
+                                <img src={user?.photoURL} alt="user image" />
+                            </div>
+                        </div>
                     </div>}
             </div>
         </>
