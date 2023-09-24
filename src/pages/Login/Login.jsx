@@ -88,7 +88,7 @@ const Login = () => {
                                 <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="Enter The Captcha" className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
-                                <input disabled={disable} className="btn bg-orange-400 hover:bg-orange-600 text-white" type="submit" value="Login" />
+                                <input disabled={false} className="btn bg-orange-400 hover:bg-orange-600 text-white" type="submit" value="Login" />
                             </div>
                         </form>
                         <SocialLogin />

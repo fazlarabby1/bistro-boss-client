@@ -2,12 +2,15 @@ import { FaBook, FaCalendarAlt, FaHome, FaShoppingBag, FaShoppingCart, FaUsers, 
 import { GiHamburgerMenu, } from "react-icons/gi";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const DashBoard = () => {
     const [cart] = useCart();
 
-    // TODO: Load Data From Serevr To Have Dynamic isAdmin Based Data
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    // if(isAdminLoading){
+    //     return <span className="loading loading-infinity loading-lg"></span>
+    // }
 
     return (
         <div className="drawer lg:drawer-open">
@@ -29,11 +32,12 @@ const DashBoard = () => {
                         isAdmin ?
                             <>
                                 <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/home'><FaHome /> Admin Home</NavLink></li>
-                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/reservation'><FaUtensils className=" mr-1" /> Add Items</NavLink></li>
-                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/mycart'><FaShoppingCart /> Manage Items</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/addItem'><FaUtensils className=" mr-1" /> Add Items</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/manageItems'><FaShoppingCart /> Manage Items</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/history'><FaBook className=" mr-1" /> Manage Bookings</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/allusers'><FaUsers className=" mr-1" /> All Users</NavLink></li>
-                            </> :
+                            </>
+                            :
                             <>
                                 <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/home'><FaHome /> User Home</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/reservation'><FaCalendarAlt className=" mr-1" /> Reservation</NavLink></li>
