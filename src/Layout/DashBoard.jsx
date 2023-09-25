@@ -3,9 +3,11 @@ import { GiHamburgerMenu, } from "react-icons/gi";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import useMenu from "../hooks/useMenu";
 
 const DashBoard = () => {
     const [cart] = useCart();
+    const [menu] = useMenu();
 
     const [isAdmin] = useAdmin();
     // if(isAdminLoading){
@@ -33,7 +35,7 @@ const DashBoard = () => {
                             <>
                                 <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/home'><FaHome /> Admin Home</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/addItem'><FaUtensils className=" mr-1" /> Add Items</NavLink></li>
-                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/manageItems'><FaShoppingCart /> Manage Items</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/manageitems'><FaShoppingCart /> Manage Items <span className="badge badge-secondary right-2 absolute font-bold p-2">{menu?.length || 0}</span></NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/history'><FaBook className=" mr-1" /> Manage Bookings</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/allusers'><FaUsers className=" mr-1" /> All Users</NavLink></li>
                             </>

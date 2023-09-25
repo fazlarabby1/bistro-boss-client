@@ -32,7 +32,7 @@ const useAxiosSecure = () => {
       }
     );
 
-  }, [logOut, navigate]);
+  }, [logOut, navigate, axiosSecure.interceptors.request, axiosSecure.interceptors.response]);
 
   return axiosSecure;
 };
