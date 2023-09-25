@@ -33,7 +33,7 @@ const DashBoard = () => {
                             <>
                                 <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/home'><FaHome /> Admin Home</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/addItem'><FaUtensils className=" mr-1" /> Add Items</NavLink></li>
-                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/manageItems'><FaShoppingCart /> Manage Items</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/manageitems'><FaShoppingCart /> Manage Items</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/history'><FaBook className=" mr-1" /> Manage Bookings</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/allusers'><FaUsers className=" mr-1" /> All Users</NavLink></li>
                             </>
