@@ -6,8 +6,8 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const ManageItems = () => {
-    const [menu, refetch] = useMenu();
     const axiosSecure = useAxiosSecure();
+    const [menu, loading, refetch] = useMenu();
 
     const handleUpdate = (item) => {
         // async () => {
@@ -30,12 +30,11 @@ const ManageItems = () => {
 
                 axiosSecure.delete(`/menu/${item?._id}`)
                     .then(res => {
-                        console.log(res.data);
                         if (res.data.deletedCount > 0) {
                             refetch();
                             Swal.fire(
                                 'Deleted!',
-                                `${item?.name} Deleted Successfully.`,
+                                'Your file has been deleted.',
                                 'success'
                             )
                         }
