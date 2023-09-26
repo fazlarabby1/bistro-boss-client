@@ -11,8 +11,7 @@ const FoodCard = ({ item }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleAddToCart = (item) => {
-        console.log(item);
+    const handleAddToCart = () => {
         if (user && user.email) {
             const cartItem = {
                 menuItemId: _id, name, image, price, email: user?.email

@@ -119,7 +119,7 @@ const AddItem = () => {
                     <input type="file" className="file-input rounded-none w-full max-w-xs" {...register("image", { required: true })} />
                     {errors.image && <span className='text-red-700'>Item image is required</span>}
                 </div>
-                <input className="btn rounded-sm my-3" type="submit" value="Add Item" />
+                <input className="btn rounded-sm my-3 hover:bg-[#D1A054]" type="submit" value="Add Item" />
             </form>
         </div>
     );

@@ -49,7 +49,7 @@ const MyCart = () => {
                 <div className="uppercase flex justify-evenly font-medium">
                     <h2 className="text-2xl">Total Items: {cart?.length}</h2>
                     <h2 className="text-2xl">Total Price: ${totalPrice}</h2>
-                    <button className="btn btn-warning btn-sm">Pay</button>
+                    <Link to='/dashboard/payment'><button className="btn btn-warning rounded-md btn-sm">Pay</button></Link>
                 </div>
                 <div className="overflow-x-auto mt-5">
                     <table className="table">
@@ -98,8 +98,8 @@ const MyCart = () => {
                                 <th></th>
                                 <th className="text-xs">
                                     {
-                                    cart?.length ? <span>We are happy with you. Thank You</span>:
-                                    <Link to="/order/salad" className="text-blue-400 hover:text-blue-600 hover:underline">Check our food list to order</Link>
+                                        cart?.length ? <span>We are happy with you. Thank You</span> :
+                                            <Link to="/order/salad" className="text-blue-400 hover:text-blue-600 hover:underline">Check our food list to order</Link>
                                     }
                                 </th>
                                 <th></th>
