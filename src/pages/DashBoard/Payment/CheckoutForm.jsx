@@ -11,14 +11,16 @@ const CheckoutForm = ({ price }) => {
     const elements = useElements();
     const [cardError, setCardError] = useState(null);
     const [clientSecret, setClientSecret] = useState(null);
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
 
     useEffect(() => {
         axiosSecure.post('/create-payment-intent', { price })
             .then(res => {
-                console.log(res.data.clientSecret);
+                // console.log(res.data.clientSecret);
                 setClientSecret(res.data.clientSecret);
             })
-    }, [axiosSecure, price]);
+    }, [price]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,7 +34,7 @@ const CheckoutForm = ({ price }) => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
@@ -43,9 +45,9 @@ const CheckoutForm = ({ price }) => {
         }
         else {
             setCardError(null)
-            console.log(paymentMethod.created);
         }
 
+        setProcessing(true);
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -59,10 +61,15 @@ const CheckoutForm = ({ price }) => {
             },
         );
 
+        setProcessing(false);
         if (confirmError) {
             console.log(confirmError);
         }
         console.log(paymentIntent);
+        if (paymentIntent.status === 'succeeded') {
+            setTransactionId(paymentIntent.id);
+            // TODO: Next steps
+        }
     };
 
     return (
@@ -88,8 +95,11 @@ const CheckoutForm = ({ price }) => {
                 {
                     cardError && <p className='text-red-700 mt-2'>{cardError?.message}</p>
                 }
+                {
+                    transactionId && <p className='text-success mt-2'>Transaction is successful with a transactionID of: <span className="text-lg font-semibold">{transactionId}</span></p>
+                }
                 <div>
-                    <button className="btn btn-info rounded-md btn-sm mt-7" type="submit" disabled={!stripe || !clientSecret}>
+                    <button className="btn btn-info rounded-md btn-sm mt-7" type="submit" disabled={!stripe || !clientSecret || processing}>
                         Pay
                     </button>
                 </div>
