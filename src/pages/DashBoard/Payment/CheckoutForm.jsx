@@ -3,8 +3,9 @@ import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
+import './CheckoutForm.css';
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, cart }) => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const stripe = useStripe();
@@ -15,12 +16,14 @@ const CheckoutForm = ({ price }) => {
     const [transactionId, setTransactionId] = useState('');
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                // console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret);
-            })
-    }, [price]);
+        if (price) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    // console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+        }
+    }, [price, axiosSecure]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -68,7 +71,27 @@ const CheckoutForm = ({ price }) => {
         console.log(paymentIntent);
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
-            // TODO: Next steps
+            // save payment info to the server
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                data: new Date(),
+                quantity: cart.length,
+                cartItems: cart.map(item => item._id),
+                menuItems: cart.map(item => item.menuItemId),
+                itemNames: cart.map(item => item.name),
+                status: 'service pending'
+            };
+            console.log(payment);
+
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        // show confirmation alert
+                    }
+                })
         }
     };
 

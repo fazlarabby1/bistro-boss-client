@@ -33,7 +33,7 @@ const DashBoard = () => {
                     {
                         isAdmin ?
                             <>
-                                <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/home'><FaHome /> Admin Home</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/adminhome'><FaHome /> Admin Home</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/addItem'><FaUtensils className=" mr-1" /> Add Items</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/manageitems'><FaShoppingCart /> Manage Items <span className="badge badge-secondary right-2 absolute font-bold p-2">{menu?.length || 0}</span></NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/history'><FaBook className=" mr-1" /> Manage Bookings</NavLink></li>
@@ -41,7 +41,7 @@ const DashBoard = () => {
                             </>
                             :
                             <>
-                                <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/home'><FaHome /> User Home</NavLink></li>
+                                <li className="uppercase tracking-wider my-1 font-medium "><NavLink to='/dashboard/userhome'><FaHome /> User Home</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/reservation'><FaCalendarAlt className=" mr-1" /> Reservation</NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/mycart'><FaShoppingCart /> My Cart <span className="badge badge-secondary right-2 absolute font-bold p-2">{cart?.length || 0}</span></NavLink></li>
                                 <li className="uppercase tracking-wider my-1 font-medium"><NavLink to='/dashboard/history'><FaWallet className=" mr-1" /> Payment History</NavLink></li>

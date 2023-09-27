@@ -6,7 +6,6 @@ import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
-import Secret from "../pages/Shared/Secret/Secret";
 import DashBoard from "../Layout/DashBoard";
 import MyCart from "../pages/DashBoard/MyCart/MyCart";
 import AllUsers from "../pages/DashBoard/AllUsers/AllUsers";
@@ -14,6 +13,8 @@ import AddItem from "../pages/DashBoard/AddItem/AddItem";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../pages/DashBoard/ManageItems/ManageItems";
 import Payment from "../pages/DashBoard/Payment/Payment";
+import AdminHome from "../pages/DashBoard/AdminHome/AdminHome";
+import UserHome from "../pages/DashBoard/UserHome/UserHome";
 
 export const router = createBrowserRouter([
     {
@@ -40,10 +41,6 @@ export const router = createBrowserRouter([
                 path: 'signup',
                 element: <SignUp />
             },
-            {
-                path: 'secret',
-                element: <PrivateRoute><Secret></Secret></PrivateRoute>
-            },
         ]
     },
     {
@@ -56,11 +53,19 @@ export const router = createBrowserRouter([
                 element: <MyCart></MyCart>
             },
             {
+                path: 'userhome',
+                element: <UserHome></UserHome>
+            },
+            {
                 path: 'payment',
                 element: <Payment />
             },
 
             // admin routes
+            {
+                path: 'adminhome',
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+            },
             {
                 path: 'allusers',
                 element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
@@ -71,7 +76,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'manageitems',
-                element: <AdminRoute><ManageItems /></AdminRoute>
+                element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
             },
         ]
     }
