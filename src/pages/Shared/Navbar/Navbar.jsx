@@ -21,10 +21,12 @@ const Navbar = () => {
             <li><Link className="btn btn-ghost hover:text-white" to="/">Home</Link></li>
             <li><Link className="btn btn-ghost hover:text-white" to="/menu">Our Menu</Link></li>
             <li><Link className="btn btn-ghost hover:text-white" to="/order/salad">Order Food</Link></li>
-            <li><Link className="btn btn-ghost hover:text-white" to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</Link></li>
             {
                 user ?
-                    <li onClick={handleLogOut}><Link className="btn btn-ghost hover:text-white">Log Out</Link></li>
+                    <>
+                        <li><Link className="btn btn-ghost hover:text-white" to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</Link></li>
+                        <li onClick={handleLogOut}><Link className="btn btn-ghost hover:text-white">Log Out</Link></li>
+                    </>
                     :
                     <li><Link className="btn btn-ghost hover:text-white" to="/login">Login</Link></li>
             }

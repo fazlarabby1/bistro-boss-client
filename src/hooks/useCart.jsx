@@ -21,7 +21,7 @@ export default useCart;
 
 // queryFn: async () => {
         //     const token = localStorage.getItem('access-token');
-        //     const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
+        //     const response = await fetch(`https://bistro-boss-server-nine-pink.vercel.app/carts?email=${user?.email}`, {
         //         headers: {
         //             authorization: `bearer ${token}`
         //         }

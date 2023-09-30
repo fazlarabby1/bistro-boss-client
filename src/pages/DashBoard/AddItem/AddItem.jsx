@@ -52,7 +52,7 @@ const AddItem = () => {
                             })
                         })
 
-                    // fetch('http://localhost:5000/menu', {
+                    // fetch('https://bistro-boss-server-nine-pink.vercel.app/menu', {
                     //     headers: {
                     //         'content-type': 'application/json'
                     //     }
